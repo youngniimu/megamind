@@ -21,5 +21,5 @@ export const useDarkMode = () => {
     dispatch(toggleDarkMode());
   };
 
-  return { toggle };
+  return { toggle, darkMode: darkMode ? 'dark' : 'light' };
 };

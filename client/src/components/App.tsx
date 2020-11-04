@@ -1,18 +1,29 @@
-import './css/app.css';
+import './app.css';
 
 import React from 'react';
 
-import { Landing } from './Landing';
-import { useDarkMode } from '../hooks/useDarkMode';
+import { Route } from './Nav/Route';
+import { Landing } from './Landing/Landing';
+import { SinglePlayerLobby } from './SinglePlayer/SinglePlayerLobby';
+import { SinglePlayerGame } from './SinglePlayer/SinglePlayerGame';
+import { MultiPlayerLobby } from './Multiplayer/MultiPlayerLobby';
 
 const _App = (): JSX.Element => {
-  const { toggle } = useDarkMode();
-
   return (
-    <div>
-      <button onClick={toggle}>darkMode</button>
-      <Landing />
-    </div>
+    <>
+      <Route path="/">
+        <Landing />
+      </Route>
+      <Route path="/singleplayer/lobby">
+        <SinglePlayerLobby />
+      </Route>
+      <Route path="/singleplayer/game">
+        <SinglePlayerGame />
+      </Route>
+      <Route path="/multiplayer/game">
+        <MultiPlayerLobby />
+      </Route>
+    </>
   );
 };
 

@@ -1,30 +1,36 @@
-import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { visitFunctionBody } from 'typescript';
+import { Action } from '../actions/types';
+import { useState } from 'react';
 
-interface UseRequestProps {
+type Method = 'get' | 'post';
+
+interface UseRequestProps<T extends Action> {
   url: string;
-  method: 'get' | 'post' | 'patch' | 'delete';
-  body: {};
-  onSuccess?(data: {}): void;
+  method: Method;
+  data: T['payload'];
+  onSuccess(props: any): void; // to be called with respose.data which is super hard to know in advance
 }
 
-const useRequest = async ({
+function useRequest<T extends Action>({
   url,
   method,
-  body,
+  data,
   onSuccess,
-}: UseRequestProps) => {
-  const [errors, setErrors] = useState(null);
-  const doRequest = async (props: {}) => {
+}: UseRequestProps<T>) {
+  const [errors, setErrors] = useState();
+
+  const doRequest = async (props?: {}) => {
     try {
-      setErrors(null);
-      // @ts-ignore
-      const response = await axios[method](url, { ...body, ...props });
+      const response = await axios({ method, url, data });
       if (onSuccess) {
         onSuccess(response.data);
       }
-    } catch (err) {}
-    return { doRequest, errors };
+      return response.data;
+    } catch (err) {
+      setErrors(err.response.data.errors);
+    }
   };
-};
+  return { doRequest, errors };
+}
+
+export { useRequest };

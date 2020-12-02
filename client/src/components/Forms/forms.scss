@@ -1,8 +1,17 @@
+@import '../app.scss';
+
 .form-text-input {
+  @extend %basic-div;
+  width: 100%;
+  box-sizing: border-box;
   text-align: center;
   margin-top: 0.5em;
-  padding: 0.5em;
-  border-radius: 10px;
-  border: 1px solid gray;
-  max-width: 100%;
+}
+
+.signup-color {
+  display: inline-block;
+}
+
+.success-text {
+  @extend %basic-div;
 }

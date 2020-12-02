@@ -17,6 +17,19 @@
   width: 15em;
 }
 
+.landing-user-actions {
+  position: absolute;
+  left: 10px;
+
+  display: flex;
+}
+
+.landing-user-item {
+  border: 1px solid var(--color);
+  border-radius: 10px;
+  padding: 0.5em;
+}
+
 .landing-footer {
   position: absolute;
   left: 0;

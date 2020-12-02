@@ -14,10 +14,22 @@ spec:
     spec:
       containers:
         - name: auth
-          image: niimu/megamind:auth
+          image: niimu/mmauth
           env:
+            - name: JWT_KEY
+              value: 'asdf'
             - name: MONGO_URI
               value: 'mongodb://auth-mongo-srv:27017/auth'
+            - name: JWT_SECRET
+              value: 'asdf'
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: 'http://nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: megamind
 ---
 apiVersion: v1
 kind: Service

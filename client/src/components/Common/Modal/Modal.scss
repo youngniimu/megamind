@@ -1,14 +1,3 @@
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1040;
-  width: 100vw;
-  height: 100vh;
-  background: var(--fade);
-  opacity: 0.3;
-}
-
 .modal-wrapper {
   position: fixed;
   top: 0;
@@ -27,6 +16,7 @@
   margin: 1.75rem auto;
   border-radius: 3px;
   padding: 2rem;
+  overflow: hidden;
 }
 
 .modal-close-button {
@@ -36,6 +26,6 @@
   font-size: 1.4rem;
   font-weight: 700;
   line-height: 1;
-  color: var(--color);
+  color: red;
   border: none;
 }

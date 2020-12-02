@@ -17,9 +17,7 @@ export const useDarkMode = () => {
       .setAttribute('data-theme', darkMode ? 'dark' : 'light');
   }, [darkMode]);
 
-  const toggle = () => {
-    dispatch(toggleDarkMode());
-  };
+  const toggleDark = () => dispatch(toggleDarkMode());
 
-  return { toggle, darkMode: darkMode ? 'dark' : 'light' };
+  return { toggleDark, darkMode: darkMode ? 'dark' : 'light' };
 };

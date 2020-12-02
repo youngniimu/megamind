@@ -2,10 +2,9 @@ import React from 'react';
 
 import './toggleSwitch.scss';
 
-import { useDarkMode } from '../../../hooks/useDarkMode';
-
 interface ToggleButtonProps {
   name: string;
+  toggle(): void;
   style?: {
     right?: string;
     left?: string;
@@ -14,9 +13,11 @@ interface ToggleButtonProps {
   };
 }
 
-const ToggleSwitch = ({ name, style }: ToggleButtonProps): JSX.Element => {
-  const { toggle, darkMode } = useDarkMode();
-
+const ToggleSwitch = ({
+  name,
+  style,
+  toggle,
+}: ToggleButtonProps): JSX.Element => {
   // input gives only the on/off feature, no visible difference
   return (
     <>

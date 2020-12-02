@@ -1,4 +1,4 @@
-import './app.css';
+import './app.scss';
 
 import React from 'react';
 
@@ -7,6 +7,7 @@ import { Landing } from './Landing/Landing';
 import { SinglePlayerLobby } from './SinglePlayer/SinglePlayerLobby';
 import { SinglePlayerGame } from './SinglePlayer/SinglePlayerGame';
 import { MultiPlayerLobby } from './Multiplayer/MultiPlayerLobby';
+import { MultiPlayerGame } from './Multiplayer/MultiPlayerGame';
 
 const _App = (): JSX.Element => {
   return (
@@ -20,8 +21,11 @@ const _App = (): JSX.Element => {
       <Route path="/singleplayer/game">
         <SinglePlayerGame />
       </Route>
-      <Route path="/multiplayer/game">
+      <Route path="/multiplayer/lobby">
         <MultiPlayerLobby />
+      </Route>
+      <Route path="/multiplayer/game">
+        <MultiPlayerGame />
       </Route>
     </>
   );
